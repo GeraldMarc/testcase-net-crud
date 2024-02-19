@@ -1,0 +1,77 @@
+﻿@model TestCaseNetCrud.Models.PurchaseOrdersViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Purchase Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseOrders.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseOrders.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseOrders.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseOrders.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseOrders.SupplierName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseOrders.SupplierName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseOrders.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseOrders.Remarks)
+        </dd>
+    </dl>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderDetails.FirstOrDefault().ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderDetails.FirstOrDefault().Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderDetails.FirstOrDefault().UnitPrice)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.PurchaseOrderDetails)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
